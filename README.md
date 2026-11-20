@@ -1,1 +1,0 @@
-# qa-geektrust-backend-problem-35-java-starter-kit
