@@ -4,11 +4,13 @@
     <property name="src.main" value="src/main/java"/>
     <property name="src.test" value="src/test/java"/>
     <property name="out.dir" value="out"/>
+    <property name="dist.dir" value="dist"/>
     <property name="main.class" value="Main"/>
     <property name="test.class" value="TestSample"/>
 
     <target name="clean" description="Remove build output">
         <delete dir="${out.dir}"/>
+        <delete dir="${dist.dir}"/>
     </target>
 
     <target name="compile" description="Compile the solution">
@@ -16,13 +18,16 @@
         <javac srcdir="${src.main}" destdir="${out.dir}" includeantruntime="false"/>
     </target>
 
-    <target name="build" depends="compile" description="Compile and package the solution">
-        <jar destfile="${out.dir}/main.jar" basedir="${out.dir}" includes="*.class">
+    <target name="dist" depends="compile" description="Package the solution as dist/main.jar">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/main.jar" basedir="${out.dir}" includes="*.class">
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
         </jar>
     </target>
+
+    <target name="build" depends="dist" description="Same as dist"/>
 
     <target name="run" depends="compile" description="Run the solution with sample_input.txt">
         <java classname="${main.class}" classpath="${out.dir}" input="sample_input.txt" fork="true"/>

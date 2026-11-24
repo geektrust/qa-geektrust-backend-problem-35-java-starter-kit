@@ -32,6 +32,6 @@ Unit tests are located in `src/test/java/TestSample.java`. Add your own cases th
 ├── sample_input.txt               # Input used by run.sh
 ├── run.sh                         # Runs your solution
 ├── run_unittests.sh               # Runs all unit tests
-├── build.xml                      # Ant build file (clean, compile, build, run, test)
+├── build.xml                      # Ant build file (clean, compile, dist, run, test)
 └── README.md                      # This file
 ```
