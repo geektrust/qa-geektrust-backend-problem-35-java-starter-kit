@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="peak-traffic-window" default="build" basedir=".">
+
+    <property name="src.main" value="src/main/java"/>
+    <property name="src.test" value="src/test/java"/>
+    <property name="out.dir" value="out"/>
+    <property name="main.class" value="Main"/>
+    <property name="test.class" value="TestSample"/>
+
+    <target name="clean" description="Remove build output">
+        <delete dir="${out.dir}"/>
+    </target>
+
+    <target name="compile" description="Compile the solution">
+        <mkdir dir="${out.dir}"/>
+        <javac srcdir="${src.main}" destdir="${out.dir}" includeantruntime="false"/>
+    </target>
+
+    <target name="build" depends="compile" description="Compile and package the solution">
+        <jar destfile="${out.dir}/main.jar" basedir="${out.dir}" includes="*.class">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile" description="Run the solution with sample_input.txt">
+        <java classname="${main.class}" classpath="${out.dir}" input="sample_input.txt" fork="true"/>
+    </target>
+
+    <target name="test" depends="compile" description="Run the unit tests">
+        <javac srcdir="${src.test}" destdir="${out.dir}" classpath="${out.dir}" includeantruntime="false"/>
+        <java classname="${test.class}" classpath="${out.dir}" fork="true" failonerror="true"/>
+    </target>
+
+</project>
