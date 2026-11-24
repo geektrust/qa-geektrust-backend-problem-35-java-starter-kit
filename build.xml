@@ -18,9 +18,9 @@
         <javac srcdir="${src.main}" destdir="${out.dir}" includeantruntime="false"/>
     </target>
 
-    <target name="dist" depends="compile" description="Package the solution as dist/main.jar">
-        <mkdir dir="${dist.dir}"/>
-        <jar destfile="${dist.dir}/main.jar" basedir="${out.dir}" includes="*.class">
+    <target name="dist" depends="compile" description="Package the solution as dist/lib/dist.jar">
+        <mkdir dir="${dist.dir}/lib"/>
+        <jar destfile="${dist.dir}/lib/dist.jar" basedir="${out.dir}" includes="*.class">
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
@@ -29,8 +29,11 @@
 
     <target name="build" depends="dist" description="Same as dist"/>
 
-    <target name="run" depends="compile" description="Run the solution with sample_input.txt">
-        <java classname="${main.class}" classpath="${out.dir}" input="sample_input.txt" fork="true"/>
+    <target name="run" depends="compile" description="Run the solution with the sample input as arguments">
+        <java classname="${main.class}" classpath="${out.dir}" fork="true">
+            <arg value="8 5"/>
+            <arg value="1 2 3 7 8 9 10 11"/>
+        </java>
     </target>
 
     <target name="test" depends="compile" description="Run the unit tests">

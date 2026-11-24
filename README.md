@@ -1,6 +1,6 @@
 # Peak Traffic Window
 
-Write your solution in `src/main/java/Main.java`, inside the `peakWindow` method. Input is read from standard input and the result is printed to standard output, as described in the problem statement.
+Write your solution in `src/main/java/Main.java`, inside the `peakWindow` method. Each input line is passed to the program as a command-line argument (standard input is used if there are none), and the result is printed to standard output, as described in the problem statement.
 
 ---
 
@@ -10,7 +10,7 @@ Write your solution in `src/main/java/Main.java`, inside the `peakWindow` method
 ./run.sh
 ```
 
-This compiles and runs `Main.java` with the contents of `sample_input.txt` as input. Edit that file to try other inputs.
+This compiles and runs `Main.java` with the lines of `sample_input.txt` passed as command-line arguments, the same way the checker runs it. Edit that file to try other inputs.
 
 ---
 
